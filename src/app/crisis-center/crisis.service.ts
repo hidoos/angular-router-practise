@@ -1,8 +1,10 @@
-import { BehaviorSubject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { map } from 'rxjs/operators';
 
 export class Crisis {
-  constructor(public id: number, public name: string) { }
+  constructor(public id: number, public name: string) {
+  }
 }
 
 const CRISES = [
@@ -12,14 +14,15 @@ const CRISES = [
   new Crisis(4, 'Procrastinators Meeting Delayed Again'),
 ];
 
-import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CrisisService {
   static nextCrisisId = 100;
   private crises$: BehaviorSubject<Crisis[]> = new BehaviorSubject<Crisis[]>(CRISES);
 
-  getCrises() { return this.crises$; }
+  getCrises() {
+    return this.crises$;
+  }
 
   getCrisis(id: number | string) {
     return this.getCrises().pipe(

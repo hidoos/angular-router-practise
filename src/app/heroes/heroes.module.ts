@@ -1,9 +1,9 @@
-import { NgModule }       from '@angular/core';
-import { CommonModule }   from '@angular/common';
-import { FormsModule }    from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
-import { HeroListComponent }    from './hero-list.component';
-import { HeroDetailComponent }  from './hero-detail.component';
+import { HeroListComponent } from './hero-list.component';
+import { HeroDetailComponent } from './hero-detail.component';
 
 import { HeroService } from './hero.service';
 
@@ -19,6 +19,7 @@ import { HeroRoutingModule } from './heroes-routing.module';
     HeroListComponent,
     HeroDetailComponent
   ],
-  providers: [ HeroService ]
+  providers: [HeroService]
 })
-export class HeroesModule {}
+export class HeroesModule {
+}

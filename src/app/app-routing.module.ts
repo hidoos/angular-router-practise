@@ -1,11 +1,14 @@
-import { NgModule }             from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import {
+  RouterModule,
+  Routes
+} from '@angular/router';
 
-import { ComposeMessageComponent }  from './compose-message.component';
-import { PageNotFoundComponent }    from './not-found.component';
+import { ComposeMessageComponent } from './compose-message.component';
+import { PageNotFoundComponent } from './not-found.component';
 
-import { CanDeactivateGuard }       from './can-deactivate-guard.service';
-import { AuthGuard }                from './auth-guard.service';
+import { CanDeactivateGuard } from './can-deactivate-guard.service';
+import { AuthGuard } from './auth-guard.service';
 import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
 
 const appRoutes: Routes = [
@@ -22,10 +25,10 @@ const appRoutes: Routes = [
   {
     path: 'crisis-center',
     loadChildren: 'app/crisis-center/crisis-center.module#CrisisCenterModule',
-    data: { preload: true }
+    data: {preload: true}
   },
-  { path: '',   redirectTo: '/superheroes', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+  {path: '', redirectTo: '/superheroes', pathMatch: 'full'},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
@@ -35,7 +38,6 @@ const appRoutes: Routes = [
       {
         enableTracing: true, // <-- debugging purposes only
         preloadingStrategy: SelectivePreloadingStrategy,
-
       }
     )
   ],
@@ -47,4 +49,5 @@ const appRoutes: Routes = [
     SelectivePreloadingStrategy
   ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

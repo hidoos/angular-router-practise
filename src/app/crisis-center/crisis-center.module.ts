@@ -1,13 +1,13 @@
-import { NgModule }       from '@angular/core';
-import { FormsModule }    from '@angular/forms';
-import { CommonModule }   from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
-import { CrisisService }        from './crisis.service';
+import { CrisisService } from './crisis.service';
 
-import { CrisisCenterComponent }     from './crisis-center.component';
-import { CrisisListComponent }       from './crisis-list.component';
+import { CrisisCenterComponent } from './crisis-center.component';
+import { CrisisListComponent } from './crisis-list.component';
 import { CrisisCenterHomeComponent } from './crisis-center-home.component';
-import { CrisisDetailComponent }     from './crisis-detail.component';
+import { CrisisDetailComponent } from './crisis-detail.component';
 
 import { CrisisCenterRoutingModule } from './crisis-center-routing.module';
 
@@ -27,4 +27,5 @@ import { CrisisCenterRoutingModule } from './crisis-center-routing.module';
     CrisisService
   ]
 })
-export class CrisisCenterModule {}
+export class CrisisCenterModule {
+}
