@@ -4,4 +4,5 @@ import { Component } from '@angular/core';
   template: '<h2>Page not found</h2>',
   styles: ['h2 { border: 2px solid brown; padding: 8px} ']
 })
-export class PageNotFoundComponent {}
+export class PageNotFoundComponent {
+}

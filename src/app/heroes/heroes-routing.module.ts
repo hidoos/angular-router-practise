@@ -4,7 +4,7 @@ import {
   Routes
 } from '@angular/router';
 
-import { HeroListComponent } from './hero-list.component';
+import { HeroListComponent } from '../hero-list.component';
 import { HeroDetailComponent } from './hero-detail.component';
 
 const heroesRoutes: Routes = [
