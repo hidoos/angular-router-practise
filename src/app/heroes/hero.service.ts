@@ -1,31 +1,21 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs/internal/Observable/of';
-import { map } from 'rxjs/operators';
 
-export class Hero {
-  constructor(public id: number, public name: string) {
-  }
-}
+import { Observable} from 'rxjs/internal/Observable';
 
-const HEROES = [
-  new Hero(11, 'Mr. Nice'),
-  new Hero(12, 'Narco'),
-  new Hero(13, 'Bombasto'),
-  new Hero(14, 'Celeritas'),
-  new Hero(15, 'Magneta'),
-  new Hero(16, 'RubberMan')
-];
 
-@Injectable()
+import { Hero } from './hero';
+import { HEROES } from './mock-heroes';
+import { of } from 'rxjs/internal/observable/of';
+
+@Injectable({
+  providedIn: 'root',
+})
 export class HeroService {
-  getHeroes() {
-    return of(HEROES);
-  }
 
-  getHero(id: number | string) {
-    return this.getHeroes().pipe(
-      // (+) before `id` turns the string into a number
-      map(heroes => heroes.find(hero => hero.id === +id))
-    );
+  constructor() { }
+
+  getHeroes(): Observable<Hero[]> {
+    // TODO: send the message _after_ fetching the heroes
+    return of(HEROES);
   }
 }

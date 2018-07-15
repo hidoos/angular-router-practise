@@ -4,14 +4,11 @@ import {
   RouterModule,
   Routes
 } from '@angular/router';
-import { HeroListComponent } from './hero-list.component';
+import { HeroListComponent } from './heroes/hero-list.component';
 import { CrisisListComponent } from './crisis-list.component';
 import { PageNotFoundComponent } from './not-found.component';
 
 const appRoutes: Routes = [
-  {
-    path: 'heroes', component: HeroListComponent
-  },
   {
     path: 'crisis-center', component: CrisisListComponent
   },

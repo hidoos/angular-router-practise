@@ -1,68 +1,27 @@
-import { switchMap } from 'rxjs/operators';
-import {
-  Component,
-  OnInit,
-  HostBinding
-} from '@angular/core';
-import {
-  Router,
-  ActivatedRoute,
-  ParamMap
-} from '@angular/router';
-import { Observable } from 'rxjs/internal/Observable';
-
-import { slideInDownAnimation } from '../animations';
-
-import {
-  Hero,
-  HeroService
-} from './hero.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { Hero } from './hero';
 
 @Component({
+  selector: 'app-hero-detail',
   template: `
-    <h2>HEROES</h2>
-    <div *ngIf="hero$ | async as hero">
-      <h3>"{{ hero.name }}"</h3>
+    <div *ngIf="hero">
+      <h2>{{ hero.name | uppercase }} Details</h2>
+      <div><span>id: </span>{{hero.id}}</div>
       <div>
-        <label>Id: </label>{{ hero.id }}
+        <label>name:
+          <input [(ngModel)]="hero.name" placeholder="name"/>
+        </label>
       </div>
-      <div>
-        <label>Name: </label>
-        <input [(ngModel)]="hero.name" placeholder="name"/>
-      </div>
-      <p>
-        <button (click)="gotoHeroes(hero)">Back</button>
-      </p>
     </div>
-  `,
-  animations: [slideInDownAnimation]
+  `
 })
 export class HeroDetailComponent implements OnInit {
-  @HostBinding('@routeAnimation') routeAnimation = true;
-  @HostBinding('style.display') display = 'block';
-  @HostBinding('style.position') position = 'absolute';
 
-  hero$: Observable<Hero>;
+  @Input() hero: Hero;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private service: HeroService
-  ) {
-  }
+  constructor() { }
 
   ngOnInit() {
-    this.hero$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.service.getHero(params.get('id')))
-    );
   }
 
-  gotoHeroes(hero: Hero) {
-    const heroId = hero ? hero.id : null;
-    // Pass along the hero id if available
-    // so that the HeroList component can select that hero.
-    // Include a junk 'foo' property for fun.
-    this.router.navigate(['/heroes', {id: heroId, foo: 'foo'}]);
-  }
 }
