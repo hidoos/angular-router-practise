@@ -1,45 +1,39 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   RouterModule,
   Routes
 } from '@angular/router';
-
-import { CrisisCenterComponent } from './crisis-center/crisis-center.component';
 import { HeroListComponent } from './hero-list.component';
+import { CrisisListComponent } from './crisis-list.component';
 import { PageNotFoundComponent } from './not-found.component';
 
 const appRoutes: Routes = [
   {
-    path: 'crisis-center',
-    component: CrisisCenterComponent
+    path: 'heroes', component: HeroListComponent
   },
   {
-    path: 'heroes',
-    component: HeroListComponent
+    path: 'crisis-center', component: CrisisListComponent
   },
   {
-    path: '',
-    redirectTo: '/heroes',
-    pathMatch: 'full'
+    path: '', redirectTo: '/heroes', pathMatch: 'full'
   },
   {
-    path: '**',
-    component: PageNotFoundComponent
+    path: '**', component: PageNotFoundComponent
   }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      {
-        enableTracing: true, // <-- debugging purposes only
-      }
-    )
+    CommonModule,
+    RouterModule.forRoot(appRoutes, {
+      enableTracing: true
+    })
   ],
   exports: [
     RouterModule
-  ]
+  ],
+  declarations: []
 })
 export class AppRoutingModule {
 }
