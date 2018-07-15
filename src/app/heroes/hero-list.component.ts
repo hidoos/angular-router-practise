@@ -1,27 +1,16 @@
-// TODO: Feature Componetized like CrisisCenter
 import { Observable } from 'rxjs/internal/Observable';
 import { switchMap } from 'rxjs/operators';
-import {
-  Component,
-  OnInit
-} from '@angular/core';
-import {
-  ActivatedRoute,
-  ParamMap
-} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
-import {
-  HeroService
-} from './hero.service';
-
-import { Hero } from './hero';
+import { Hero, HeroService } from './hero.service';
 
 @Component({
   template: `
     <h2>HEROES</h2>
     <ul class="items">
       <li *ngFor="let hero of heroes$ | async"
-          [class.selected]="hero.id === selectedId">
+        [class.selected]="hero.id === selectedId">
         <a [routerLink]="['/hero', hero.id]">
           <span class="badge">{{ hero.id }}</span>{{ hero.name }}
         </a>
@@ -39,8 +28,7 @@ export class HeroListComponent implements OnInit {
   constructor(
     private service: HeroService,
     private route: ActivatedRoute
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.heroes$ = this.route.paramMap.pipe(
