@@ -29,6 +29,7 @@ import {
         <label>Name: </label>
         <input [(ngModel)]="crisis.name" placeholder="name"/>
       </div>
+      <button (click)="gotoCrisisList(crisis)">go to Crisis List</button>
     </div>
   `,
   animations: [slideInDownAnimation]
@@ -52,5 +53,9 @@ export class CrisisDetailComponent implements OnInit {
       switchMap((params: ParamMap) =>
         this.service.getCrisis(params.get('id')))
     );
+  }
+  gotoCrisisList(crisis: Crisis): void {
+    const crisisId = crisis ? crisis.id : null;
+    this.router.navigate(['../', {id: crisisId, foo: 'foo'}], {relativeTo: this.route});
   }
 }
