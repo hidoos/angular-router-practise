@@ -10,6 +10,7 @@ import { HeroModule } from './heroes/hero.module';
 import { CrisisModule } from './crisis-center/crisis.module';
 import { ComposeMessageComponent } from './compose-message.component';
 import { AdminModule } from './admin/admin.module';
+import { DialogService } from './dialog.service';
 
 @NgModule({
   imports: [
@@ -26,7 +27,10 @@ import { AdminModule } from './admin/admin.module';
     ComposeMessageComponent,
     PageNotFoundComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    DialogService
+  ]
 })
 export class AppModule {
 }
