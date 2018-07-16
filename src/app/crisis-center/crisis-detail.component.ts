@@ -20,7 +20,6 @@ import {
 
 @Component({
   template: `
-    <h2>Crisis center</h2>
     <div *ngIf="crisis$ | async as crisis">
       <h3>"{{ crisis.name }}"</h3>
       <div>
@@ -30,9 +29,6 @@ import {
         <label>Name: </label>
         <input [(ngModel)]="crisis.name" placeholder="name"/>
       </div>
-      <p>
-        <button (click)="gotoCrises(crisis)">Back</button>
-      </p>
     </div>
   `,
   animations: [slideInDownAnimation]
@@ -56,10 +52,5 @@ export class CrisisDetailComponent implements OnInit {
       switchMap((params: ParamMap) =>
         this.service.getCrisis(params.get('id')))
     );
-  }
-
-  gotoCrises(crisis: Crisis) {
-    const crisisId = crisis ? crisis.id : null;
-    this.router.navigate(['/crises', {id: crisisId, foo: 'foo'}]);
   }
 }

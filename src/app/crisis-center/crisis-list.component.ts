@@ -16,17 +16,15 @@ import {
 
 @Component({
   template: `
-    <h2>Crisis Center</h2>
     <ul class="items">
       <li *ngFor="let crisis of crises$ | async"
           [class.selected]="crisis.id === selectedId">
-        <a [routerLink]="['/crises', crisis.id]">
+        <a [routerLink]="['/crisis-center', crisis.id]">
           <span class="badge">{{ crisis.id }}</span>{{ crisis.name }}
         </a>
       </li>
     </ul>
-
-    <button routerLink="/sidekicks">Go to sidekicks</button>
+    <router-outlet></router-outlet>
   `
 })
 export class CrisisListComponent implements OnInit {
