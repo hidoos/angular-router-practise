@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeroModule } from './heroes/hero.module';
 import { CrisisModule } from './crisis-center/crisis.module';
+import { ComposeMessageComponent } from './compose-message.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { CrisisModule } from './crisis-center/crisis.module';
   ],
   declarations: [
     AppComponent,
+    ComposeMessageComponent,
     PageNotFoundComponent
   ],
   bootstrap: [AppComponent]
