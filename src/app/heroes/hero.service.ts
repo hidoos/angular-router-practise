@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs/internal/Observable/of';
 import { map } from 'rxjs/operators';
+import { of } from 'rxjs/internal/observable/of';
 
 export class Hero {
-  constructor(public id: number, public name: string) {
-  }
+  constructor(public id: number, public name: string) { }
 }
 
 const HEROES = [
@@ -18,9 +17,7 @@ const HEROES = [
 
 @Injectable()
 export class HeroService {
-  getHeroes() {
-    return of(HEROES);
-  }
+  getHeroes() { return of(HEROES); }
 
   getHero(id: number | string) {
     return this.getHeroes().pipe(

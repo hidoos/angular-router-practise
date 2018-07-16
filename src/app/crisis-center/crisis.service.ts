@@ -33,7 +33,7 @@ export class CrisisService {
   addCrisis(name: string) {
     name = name.trim();
     if (name) {
-      let crisis = new Crisis(CrisisService.nextCrisisId++, name);
+      const crisis = new Crisis(CrisisService.nextCrisisId++, name);
       CRISES.push(crisis);
       this.crises$.next(CRISES);
     }
