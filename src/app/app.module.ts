@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeroModule } from './heroes/hero.module';
 import { CrisisModule } from './crisis-center/crisis.module';
 import { ComposeMessageComponent } from './compose-message.component';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { ComposeMessageComponent } from './compose-message.component';
     FormsModule,
     HeroModule,
     CrisisModule,
+    AdminModule,
     AppRoutingModule,
   ],
   declarations: [
