@@ -21,16 +21,19 @@ import { DialogService } from '../dialog.service';
 
 @Component({
   template: `
-    <div *ngIf="crisis$ | async as crisis">
+    <div *ngIf="crisis">
       <h3>"{{ crisis.name }}"</h3>
       <div>
         <label>Id: </label>{{ crisis.id }}
       </div>
       <div>
         <label>Name: </label>
-        <input [(ngModel)]="crisis.name" placeholder="name"/>
+        <input [(ngModel)]="editName" placeholder="name"/>
       </div>
-      <button (click)="gotoCrises(crisis)">go to Crisis List</button>
+      <p>
+        <button (click)="save()">Save</button>
+        <button (click)="cancel()">Cancel</button>
+      </p>
     </div>
   `,
   animations: [slideInDownAnimation]
@@ -40,23 +43,22 @@ export class CrisisDetailComponent implements OnInit {
   @HostBinding('style.display') display = 'block';
   @HostBinding('style.position') position = 'absolute';
 
-  crisis$: Observable<Crisis>;
   crisis: Crisis;
   editName: string;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: CrisisService,
     public dialogService: DialogService
   ) {
   }
 
   ngOnInit() {
-    this.crisis$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.service.getCrisis(params.get('id')))
-    );
+    this.route.data
+      .subscribe((data: { crisis: Crisis }) => {
+        this.editName = data.crisis.name;
+        this.crisis = data.crisis;
+      });
   }
 
   cancel() {
