@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   RouterModule,
-  Routes
+  Routes,
+  PreloadAllModules
 } from '@angular/router';
 import { PageNotFoundComponent } from './not-found.component';
 import { ComposeMessageComponent } from './compose-message.component';
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(appRoutes, {
-      enableTracing: true
+      enableTracing: true,
+      preloadingStrategy: PreloadAllModules
     })
   ],
   exports: [
