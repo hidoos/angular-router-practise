@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import { map } from 'rxjs/operators';
+import {
+  map
+} from 'rxjs/operators';
 
 export class Crisis {
   constructor(public id: number, public name: string) {

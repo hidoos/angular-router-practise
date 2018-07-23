@@ -5,8 +5,14 @@ import {
   Routes
 } from '@angular/router';
 import { PageNotFoundComponent } from './not-found.component';
+import { ComposeMessageComponent } from './compose-message.component';
 
 const appRoutes: Routes = [
+  {
+    path: 'compose',
+    component: ComposeMessageComponent,
+    outlet: 'popup'
+  },
   {
     path: '', redirectTo: '/heroes', pathMatch: 'full'
   },

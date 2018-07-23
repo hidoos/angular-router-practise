@@ -3,32 +3,29 @@ import {
   RouterModule,
   Routes
 } from '@angular/router';
+import { AuthGuard } from '../auth-guard.service';
 
-import { AdminComponent } from './admin.component';
 import { AdminDashboardComponent } from './admin-dashboard.component';
+import { AdminComponent } from './admin.component';
 import { ManageCrisesComponent } from './manage-crises.component';
 import { ManageHeroesComponent } from './manage-heroes.component';
 
-import { AuthGuard } from '../auth-guard.service';
-
-const adminRoutes: Routes = [
-  {
-    path: '',
-    component: AdminComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: '',
-        canActivateChild: [AuthGuard],
-        children: [
-          {path: 'crises', component: ManageCrisesComponent},
-          {path: 'heroes', component: ManageHeroesComponent},
-          {path: '', component: AdminDashboardComponent}
-        ]
-      }
-    ]
-  }
-];
+const adminRoutes: Routes = [{
+  path: 'admin',
+  component: AdminComponent,
+  canActivate: [AuthGuard],
+  children: [
+    {
+      path: '',
+      canActivateChild: [AuthGuard],
+      children: [
+        {path: 'crises', component: ManageCrisesComponent},
+        {path: 'heroes', component: ManageHeroesComponent},
+        {path: '', component: AdminDashboardComponent},
+      ]
+    }
+  ]
+}];
 
 @NgModule({
   imports: [
@@ -36,7 +33,8 @@ const adminRoutes: Routes = [
   ],
   exports: [
     RouterModule
-  ]
+  ],
+  providers: []
 })
 export class AdminRoutingModule {
 }
