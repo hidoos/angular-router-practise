@@ -15,7 +15,6 @@ import { LoginComponent } from './login.component';
 import { PageNotFoundComponent } from './not-found.component';
 
 import { DialogService } from './dialog.service';
-import { CrisisModule } from './crisis-center/crisis.module';
 import { CanDeactivateGuard } from './can-deactivate-guard.service';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { CanDeactivateGuard } from './can-deactivate-guard.service';
     FormsModule,
     HeroesModule,
     LoginRoutingModule,
-    CrisisModule,
     AppRoutingModule,
     BrowserAnimationsModule
   ],

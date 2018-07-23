@@ -20,6 +20,10 @@ const appRoutes: Routes = [
     canLoad: [AuthGuard] // 还需要做什么操作，才能保证懒加载？
   },
   {
+    path: 'crisis-center' ,
+    loadChildren: 'app/crisis-center/crisis.module#CrisisModule'
+  },
+  {
     path: '', redirectTo: '/heroes', pathMatch: 'full'
   },
   {
