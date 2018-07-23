@@ -11,7 +11,7 @@ import { ManageCrisesComponent } from './manage-crises.component';
 import { ManageHeroesComponent } from './manage-heroes.component';
 
 const adminRoutes: Routes = [{
-  path: 'admin',
+  path: '',
   component: AdminComponent,
   canActivate: [AuthGuard],
   children: [

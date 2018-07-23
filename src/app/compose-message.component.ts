@@ -15,6 +15,7 @@ export class ComposeMessageComponent {
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
   @HostBinding('style.position') position = 'absolute';
+  message: string;
 
   details: string;
   sending = false;
