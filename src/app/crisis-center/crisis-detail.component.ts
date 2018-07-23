@@ -17,6 +17,7 @@ import {
   Crisis,
   CrisisService
 } from './crisis.service';
+import { DialogService } from '../dialog.service';
 
 @Component({
   template: `
@@ -29,7 +30,7 @@ import {
         <label>Name: </label>
         <input [(ngModel)]="crisis.name" placeholder="name"/>
       </div>
-      <button (click)="gotoCrisisList(crisis)">go to Crisis List</button>
+      <button (click)="gotoCrises(crisis)">go to Crisis List</button>
     </div>
   `,
   animations: [slideInDownAnimation]
@@ -40,11 +41,14 @@ export class CrisisDetailComponent implements OnInit {
   @HostBinding('style.position') position = 'absolute';
 
   crisis$: Observable<Crisis>;
+  crisis: Crisis;
+  editName: string;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: CrisisService
+    private service: CrisisService,
+    public dialogService: DialogService
   ) {
   }
 
@@ -54,7 +58,17 @@ export class CrisisDetailComponent implements OnInit {
         this.service.getCrisis(params.get('id')))
     );
   }
-  gotoCrisisList(crisis: Crisis): void {
+
+  cancel() {
+    this.gotoCrises();
+  }
+
+  save() {
+    this.crisis.name = this.editName;
+    this.gotoCrises();
+  }
+
+  gotoCrises(crisis?: Crisis): void {
     const crisisId = crisis ? crisis.id : null;
     this.router.navigate(['../', {id: crisisId, foo: 'foo'}], {relativeTo: this.route});
   }

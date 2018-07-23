@@ -20,7 +20,7 @@ import {
       <li *ngFor="let crisis of crises$ | async"
           [class.selected]="crisis.id === selectedId"
           routerLinkActive="selected">
-        <a [routerLink]="['./', crisis.id]">
+        <a [routerLink]="[crisis.id]">
           <span class="badge">{{ crisis.id }}</span>{{ crisis.name }}
         </a>
       </li>
