@@ -3,12 +3,13 @@ import {
   CanActivate,
   Router,
   ActivatedRouteSnapshot,
-  RouterStateSnapshot
+  RouterStateSnapshot,
+  CanActivateChild
 } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(private authService: AuthService, private router: Router) {
   }
 
@@ -17,6 +18,15 @@ export class AuthGuard implements CanActivate {
     return this.checkLogin(url);
   }
 
+  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    return this.canActivate(route, state);
+  }
+
+  /**
+   * 检查登陆state，已经登陆了返回true，未登陆时，保存当前 url， 返回false
+   * @param {string} url
+   * @returns {boolean}
+   */
   checkLogin(url: string): boolean {
     if (this.authService.isLoggedIn) {
       return true;
