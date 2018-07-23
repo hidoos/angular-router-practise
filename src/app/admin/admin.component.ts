@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
       <a routerLink="./heroes" routerLinkActive="active">Manage Heroes</a>
     </nav>
     <router-outlet></router-outlet>
+    <router-outlet name="popup"></router-outlet>
   `
 })
 export class AdminComponent {

@@ -21,6 +21,6 @@ import { HeroDetailComponent } from './hero-detail.component';
     HeroService
   ]
 })
-export class HeroModule {
+export class HeroesModule {
 }
 
