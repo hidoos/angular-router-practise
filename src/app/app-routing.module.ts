@@ -17,6 +17,10 @@ const appRoutes: Routes = [
     path: '', redirectTo: '/heroes', pathMatch: 'full'
   },
   {
+    path: 'admin',
+    loadChildren: 'app/admin/admin.module#AdminModule',
+  },
+  {
     path: '**', component: PageNotFoundComponent
   }
 ];
